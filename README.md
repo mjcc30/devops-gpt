@@ -6,8 +6,10 @@
 Vous avez été recruté(e) par l'entreprise OpenDevOps. Votre première mission est d'aider à concevoir et déployer leur toute nouvelle application web : **DevOpsGPT**. 
 Ce TP est divisé en 3 parties indépendantes. Si vous bloquez sur une question, passez à la suivante !
 
-**⚠️ Consignes de rendu :**
-Vous rendrez le lien vers votre dépôt GitHub public ou une archive `.zip` contenant vos fichiers.
+**⚠️ Consignes :**  
+**Pour commencer :** Vous devez obligatoirement partir du code source fourni dans ce dépôt. Pour cela, cliquez sur le bouton **"Fork"** en haut à droite pour copier ce projet sur votre compte GitHub, ou téléchargez-le en cliquant sur **"Code" > "Download ZIP"**.  
+**Pour le rendu :** Vous rendrez le lien vers votre dépôt GitHub public (fortement recommandé pour l'exercice 3) ou une archive `.zip` contenant vos fichiers finaux.  
+Pensez à bien nommer vos fichiers et à vérifier que votre archive ou repos contient vos schémas, vos fichiers Docker, votre fichier YAML et un fichier contenant vos réponses aux questions ouvertes.  
 Les captures d'écran sont autorisées et même vivement encouragées.
 
 ---
@@ -37,16 +39,14 @@ Trouvez au moins 4 attributs pertinents.
 ---
 
 ## Exercice 2 : Git et Docker (7 points)
-*Créez les fichiers demandés sur votre ordinateur (dans un dossier `DevOpsGPT-app`).*
 
 **1. Méthodologie et Git (2 pts)**
 L'équipe utilise la méthode **Scrum**. On vous demande de développer le système d' **"Abonnement Premium"**.
 - **Question A :** Rédigez cette fonctionnalité sous forme de "User Story" (format : *En tant que... je veux... afin de...*).
 - **Question B :** Donnez les commandes Git exactes à taper dans le terminal pour :
-  1. Créer une nouvelle branche nommée `feature-premium-subscription` et se placer dessus.
-  2. Ajouter tous vos fichiers modifiés.
-  3. Créer un commit avec le message "Ajout du système d'abonnement premium".
-  4. Pousser cette branche sur le serveur (GitHub/GitLab).
+  1. Créer une nouvelle feature nommée `feature-premium-subscription` et faire un commit.
+  2. Une fois le travail terminé et fusionné sur `main`, créer un **tag de version** nommé `v1.0.0`.
+  3. Pousser ce tag sur le serveur GitHub.
 
 **2. Dockerisation (3 pts)**
 Le projet est divisé en deux dossiers : `frontend` (l'interface) et `backend` (l'API). Vous devez créer deux fichiers Dockerfiles :
@@ -64,24 +64,21 @@ Le projet est divisé en deux dossiers : `frontend` (l'interface) et `backend` (
 
 ## Exercice 3 : CI/CD avec GitHub Actions (7 points)
 
-Vous voulez que GitHub vérifie et déploie le code automatiquement à chaque modification sur la branche `main`.
+Vous voulez que GitHub vérifie le code à chaque modification, mais ne déploie l'application que lorsqu'une **nouvelle version (Tag)** est publiée.
 
 **1. Le Workflow CI/CD (5 pts)**
 Créez l'arborescence de dossiers `.github/workflows/` et placez-y un fichier `main.yml`.
 Écrivez ce fichier YAML en respectant ces consignes :
-- Le workflow se déclenche lors d'un `push` sur la branche `main`.
+- Le workflow se déclenche lors d'un `push` sur la branche `main` **ET** lors de la création d'un tag commençant par `v` (ex: `v1.0.0`).
 - Il contient un job nommé `test-and-deploy` qui tourne sur `ubuntu-latest`.
 - Les étapes (`steps`) du job sont :
   1. Récupérer le code (utiliser l'action `actions/checkout@v4`).
   2. Installer Node.js version 22 (utiliser `actions/setup-node@v4`).
   3. Lancer la commande : `npm install`.
   4. Lancer la commande : `npm test`.
-  5. Simuler un déploiement avec la commande : `echo "Déploiement en cours..."`
+  5. Simuler un déploiement avec la commande `echo "Déploiement en cours..."` **UNIQUEMENT** si le push est un tag.
 
 **2. Sécurité et Secrets (2 pts)**
 Votre code a besoin d'une clé secrète (`OPENAI_API_KEY`) pour se connecter à l'intelligence artificielle, mais il est strictement interdit de l'écrire en clair dans votre code.
-- **Question A :** Sur l'interface web de GitHub, expliquez où vous devez cliquer pour enregistrer ce secret de manière sécurisée.
+- **Question A :** Sur l'interface web de GitHub, expliquez où vous devez cliquer pour enregistrer ce secret de manière sécurisée ( captures d'écran autorisées ).
 - **Question B :** Quelle est la syntaxe exacte pour injecter ce secret dans votre fichier `.github/workflows/main.yml` ? (Exemple : comme variable d'environnement dans l'étape de déploiement).
-
----
-*Fin du sujet. Pensez à bien nommer vos fichiers et à vérifier que votre archive ou repos contient vos schémas, vos fichiers Docker, votre fichier YAML et un fichier contenant vos réponses aux questions ouvertes.*
