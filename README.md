@@ -7,7 +7,8 @@ Vous avez été recruté(e) par l'entreprise OpenDevOps. Votre première mission
 Ce TP est divisé en 3 parties indépendantes. Si vous bloquez sur une question, passez à la suivante !
 
 **⚠️ Consignes de rendu :**
-Vous rendrez une archive `.zip` contenant vos fichiers ou le lien vers un dépôt GitHub public.
+Vous rendrez le lien vers votre dépôt GitHub public ou une archive `.zip` contenant vos fichiers.
+Les captures d'écran sont autorisées et même vivement encouragées.
 
 ---
 
@@ -83,4 +84,4 @@ Votre code a besoin d'une clé secrète (`OPENAI_API_KEY`) pour se connecter à 
 - **Question B :** Quelle est la syntaxe exacte pour injecter ce secret dans votre fichier `.github/workflows/main.yml` ? (Exemple : comme variable d'environnement dans l'étape de déploiement).
 
 ---
-*Fin du sujet. Pensez à bien nommer vos fichiers et à vérifier que votre archive contient vos schémas, vos fichiers Docker, votre fichier YAML et un fichier texte contenant vos réponses aux questions ouvertes.*
+*Fin du sujet. Pensez à bien nommer vos fichiers et à vérifier que votre archive ou repos contient vos schémas, vos fichiers Docker, votre fichier YAML et un fichier contenant vos réponses aux questions ouvertes.*
