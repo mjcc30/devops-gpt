@@ -10,11 +10,11 @@ En tant qu'utilisateur de DevOpsGPT, je veux pouvoir accéder à un abonnement p
 
 ```bash
 git checkout -b feature-premium-subscription
-# code fini....
-# si nouveaux fichiers :
-git add .
+
+# Si nouveaux fichiers, git add .
 git commit -m "nouvelle feature : feature-premium-subscription"
-git tag -a v1.0.0 -m 'ma version 1.0.0'
-# on peut vérifier le tag avec `git tag`
-git push
+git checkout main
+git merge feature-premium-subscription
+git tag -a v1.0.0 -m "ma version 1.0.0"
+git push origin v1.0.0
 ```
